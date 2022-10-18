@@ -39,14 +39,17 @@ public class Player : MonoBehaviour
                 transform.position.z
             );
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //ForceMode2D.Impulse : 무게를 적용할 때 사용합니다.
-            rigid2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-        }
+       
     }
 
+    public void Jump()
+    {
+        
+            //ForceMode2D.Impulse : 무게를 적용할 때 사용합니다.
+            rigid2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        
 
+    }
 
    
     //유니티 2D에서는 2D Collider랑 Rigidbody 2D는 2D 충돌 함수를 사용해야 합니다.
@@ -61,29 +64,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        Debug.Log("2D 충돌중");
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Debug.Log("2D 충돌 벗어남");
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("2D 충돌 Collision");
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        Debug.Log("2D 충돌중 Collision");
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        Debug.Log("2D 충돌 벗어남 Collision");
-    }
 
 }
