@@ -6,7 +6,7 @@ public class Resolution : MonoBehaviour
     {
         Rect rect = Camera.main.rect;
 
-        float height = ((float)Screen.width / Screen.height) / (16.0f / 9.0f);
+        float height = ((float)Screen.width / Screen.height) / (9.0f / 16.0f);
         float width = 1f / height;
 
         if(height<1)

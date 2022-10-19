@@ -17,30 +17,33 @@ public class Player : MonoBehaviour
         rigid2D = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    public void Slip()
     {
-        float x = Input.GetAxis("Horizontal");
-       
+        rigid2D.velocity = Vector2.zero;
+    }
 
-        if(x>0)
+
+    public void Move(Vector2 direction)
+    {
+        
+        if (direction.x > 0)
         {
             sprite.flipX = false;
         }
 
-        else if(x<0)
+        else if (direction.x < 0)
         {
             sprite.flipX = true;
         }
 
         transform.Translate
             (
-                x * speed * Time.deltaTime,
+                direction.x * speed * Time.deltaTime,
                 0,
                 transform.position.z
             );
-
-       
     }
+
 
     public void Jump()
     {

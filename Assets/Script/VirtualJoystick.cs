@@ -7,7 +7,12 @@ public class VirtualJoystick : MonoBehaviour , IBeginDragHandler, IDragHandler,I
 
     private RectTransform rectTransform;
 
+    [SerializeField] Player player;
     [SerializeField, Range(10f,150f)] float leverRange;
+
+
+    Vector2 inputDirection;
+    bool condition;
 
     void Awake()
     {
@@ -17,6 +22,7 @@ public class VirtualJoystick : MonoBehaviour , IBeginDragHandler, IDragHandler,I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        condition = true;
         var inputDirection = eventData.position - rectTransform.anchoredPosition;
 
         var clampDirection = inputDirection.magnitude < leverRange ? 
@@ -24,10 +30,13 @@ public class VirtualJoystick : MonoBehaviour , IBeginDragHandler, IDragHandler,I
 
         lever.anchoredPosition = clampDirection;
 
+        this.inputDirection = clampDirection / leverRange;
+
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        
         //내가 가고싶은 방향 = 현재 선택한 위치 - 자신의 위치
         var inputDirection = eventData.position - rectTransform.anchoredPosition;
 
@@ -35,12 +44,28 @@ public class VirtualJoystick : MonoBehaviour , IBeginDragHandler, IDragHandler,I
 
         lever.anchoredPosition = clampDirection;
 
-      
+        this.inputDirection = clampDirection / leverRange;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        condition = false;
+        player.Slip();
         //lever의 위치를  X=0 Y=0으로 초기화합니다.
         lever.anchoredPosition = Vector2.zero;
+        player.Move(Vector2.zero);
+     
+        
+    }
+
+    public void CharacterMove()
+    {
+        player.Move(inputDirection);
+    }
+
+    void Update()
+    {
+        if (condition)
+            CharacterMove();
     }
 }
