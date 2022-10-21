@@ -50,7 +50,7 @@ public class VirtualJoystick : MonoBehaviour , IBeginDragHandler, IDragHandler,I
     public void OnEndDrag(PointerEventData eventData)
     {
         condition = false;
-        player.Slip();
+        //player.Slip();
         //lever의 위치를  X=0 Y=0으로 초기화합니다.
         lever.anchoredPosition = Vector2.zero;
         player.Move(Vector2.zero);

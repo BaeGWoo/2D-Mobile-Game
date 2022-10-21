@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rigid2D;
 
+
+    [SerializeField] int health = 100;
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] float speed = 1.0f;
     [SerializeField] float jumpPower = 1.0f;
@@ -16,12 +18,13 @@ public class Player : MonoBehaviour
     {
         rigid2D = GetComponent<Rigidbody2D>();
     }
-
-    public void Slip()
+    public void Update()
     {
-        rigid2D.velocity = Vector2.zero;
+        if (transform.position.y <= -10)
+        {
+            transform.position = Vector2.zero;
+        }
     }
-
 
     public void Move(Vector2 direction)
     {
@@ -50,6 +53,10 @@ public class Player : MonoBehaviour
         
             //ForceMode2D.Impulse : 무게를 적용할 때 사용합니다.
             rigid2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+
+
+        //1초 동안 진동을 울리는 함수
+        Handheld.Vibrate();
         
 
     }
@@ -61,10 +68,19 @@ public class Player : MonoBehaviour
         //Debug.Log("2D 충돌");
         if(collision.CompareTag("Portal"))
         {
-            Camera.main.transform.position= new Vector3(20, 0, Camera.main.transform.position.z);
-            transform.position = new Vector3(12.5f, 0, 0);
+            //Camera.main.transform.position= new Vector3(20, 0, Camera.main.transform.position.z);
+            transform.position = new Vector3(32.5f, 0, 0);
 
         }
+
+        if(collision.CompareTag("Potion"))
+        {
+            health += 10;
+
+            //충돌당한 객체 삭제
+            Destroy(collision.gameObject);
+        }
+
     }
 
 

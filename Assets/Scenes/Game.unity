@@ -613,6 +613,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9106194302359817662, guid: 859fdf3ad44542b4cbff7db14ce66b9a, type: 3}
   m_PrefabInstance: {fileID: 861701444}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &502996603 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9100580676492208682, guid: 859fdf3ad44542b4cbff7db14ce66b9a, type: 3}
+  m_PrefabInstance: {fileID: 861701444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &502996604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502996603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb693f1820ed7234bb522bffd17f0448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,7 +973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9106194302359817662, guid: 859fdf3ad44542b4cbff7db14ce66b9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.68
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 9106194302359817662, guid: 859fdf3ad44542b4cbff7db14ce66b9a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1149,7 +1166,7 @@ GameObject:
   - component: {fileID: 1012560592}
   m_Layer: 0
   m_Name: potion
-  m_TagString: Untagged
+  m_TagString: Potion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1174,7 +1191,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 3
 --- !u!212 &1012560590
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1235,7 +1252,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012560588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.95, y: 0.96, z: 0}
+  m_LocalPosition: {x: 2.66, y: 0.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1252,7 +1269,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1951,6 +1968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be078892c21e53a47adc558bac2cbe44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   sprite: {fileID: 1689240362}
   speed: 1
   jumpPower: 5
