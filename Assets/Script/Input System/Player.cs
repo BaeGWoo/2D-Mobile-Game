@@ -11,7 +11,12 @@ public class Player : MonoBehaviour
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] float speed = 1.0f;
     [SerializeField] float jumpPower = 1.0f;
+    
+    
+    public GameManager gameManager;
 
+    public int value = 0;
+   
     //private Vector2 direction;
 
     private void Start()
@@ -50,9 +55,13 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        
-            //ForceMode2D.Impulse : 무게를 적용할 때 사용합니다.
-            rigid2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        gameManager.Score = value++;
+
+        Debug.Log(gameManager.Score);
+
+
+        //ForceMode2D.Impulse : 무게를 적용할 때 사용합니다.
+        rigid2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
 
 
         //1초 동안 진동을 울리는 함수
