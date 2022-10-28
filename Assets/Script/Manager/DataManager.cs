@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Data
 {
+    public int Maxscore;
     public int money;
 
 }
@@ -13,7 +14,7 @@ public class Data
 
 public class DataManager : MonoBehaviour
 {
-
+    public int currentScore=0;
     public static DataManager instance;
     public Data data = new Data();
 
@@ -32,7 +33,7 @@ public class DataManager : MonoBehaviour
         Debug.Log(Application.persistentDataPath);
 
 
-        Save();
+        //Save();
         Load();
 
       
@@ -43,6 +44,13 @@ public class DataManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.B))
         {
             data.money++;
+            currentScore++;
+
+            if (data.Maxscore < currentScore)
+                data.Maxscore = currentScore;
+
+            Debug.Log("현재 스코어 : "+currentScore);
+            Debug.Log("최고 스코어 : " + data.Maxscore);
             Save();
         }
     }
